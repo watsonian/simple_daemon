@@ -12,7 +12,7 @@ thought out daemonization process from daemon-kit for simpler daemon setups.
 
 You set configuration options as follows:
 
- SimpleDaemon.setup do |config
+ SimpleDaemon.setup do |config|
    config.daemon_name = "some_name"
    config.pid_file = "/var/run/some_name.pid"
  end
