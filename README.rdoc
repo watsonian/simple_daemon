@@ -27,12 +27,16 @@ in a block as follows:
  end
 
 The pid file is automatically created and the script is backgrounded when run. When
-the process exits the pid file is cleaned up automatically. If the process is dies
-or is forcibly killed with a KILL signal then the pid file will stay in place, but
+the process exits the pid file is cleaned up automatically. If the process dies or
+is forcibly killed with a KILL signal then the pid file will stay in place, but
 the daemonized blocks check to see if the process in the pid file is running or not.
 If it isn't, it will spin up a new process and replace the existing pid file. Keep
 in mind that there's no facility (yet) to handle the case where the process is still
 running, but no pid file exists.
+
+Another thing to keep in mind is that the daemonized process is chroot'd to / and
+has its umask set to 0000. So, if you're writing out to files in the relative directory
+they'll show up in /, so you'll likely want to use full paths.
 
 == Copyright
 
